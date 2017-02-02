@@ -19,10 +19,11 @@
     var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
     var request = new XMLHttpRequest();
     request.open('GET', requestURL);
-    request.responseType = 'json';
+    request.responseType = 'text';
+
     request.send();
     request.onload = function() {
-        var superHeroes = request.response;
+        var superHeroes = JSON.parse(request.response);
         populateHeader(superHeroes);
         showHeroes(superHeroes);
     }
